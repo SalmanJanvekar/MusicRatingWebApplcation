@@ -1,6 +1,10 @@
-var song = require('./Song.js');
-var users = require('./Users.js');
+var song = require('./Models/Song.js');
+var users = require('./Models/Users.js');
+var reviews = require('./Models/Reviews.js');
+
 const bcrypt = require('bcrypt');
+
+var randomCode = require("randomstring");
 
 
 //Simple version, without validation or sanitation
@@ -81,10 +85,12 @@ exports.user_createUser = function (req, res, next){
             {
                 Email: req.body.Email,
                 Password: hash,
-             
+                Active: false,
+                Deactive: true,
+                authenticationCode: randomCode.generate(5),
+
             }
         );
-    
             Users.save(function (err, Users) {
                 if (err) {
                     return next(err);
@@ -95,4 +101,52 @@ exports.user_createUser = function (req, res, next){
 
 };
 
+//Existing user can Log in if they use the same password & username
+exports.user_logInUser = function (req, res, next){
+    const Username = req.body.Email;
+    const Password = req.body.Password;
+
+    users.findOne({ Email: Username, Password: Password}, function(err, foundUser){
+        if(err){
+            res.send(err);
+        }
+        if(!foundUser){
+            res.send("User not found")
+        }
+        res.send(foundUser);
+    })
+}
+
+
+//Reviews Controllers
+
+//Creates a new Rating for a song
+exports.reviews_createReviews = function (req, res, next) {
+    let Reviews = new reviews(
+        {
+            Name: req.body.Name,
+            Rating: req.body.Rating,
+            TrackName: req.body.TrackName,
+        }
+    );
+
+    Reviews.save(function (err, Reviews) {
+        if (err) {
+            return next(err);
+        }
+        res.json({message: 'Rating Submitted.', Reviews});
+    })
+};
+
+//Gets All reviews for a song
+exports.reviews_getAll = function (req, res, next){
+    reviews.find((err, items) => {
+        if(err){
+            console.log(err);
+            return next(err);
+        }
+        
+        return res.json({items});
+    });
+}
 
