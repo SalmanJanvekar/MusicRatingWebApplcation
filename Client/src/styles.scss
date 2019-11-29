@@ -2,15 +2,15 @@
 
 $primary: rgb(255, 255, 255);
 
-body {
-    margin: 0;
-    font-family: 'Fjalla One', sans-serif;
-    font-size: 15px;
-}
-
 .container {
     width: 80%;
     margin: 0 auto;
+}
+body {
+    margin: 0;
+    height:40em; background-size:cover; width:auto;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 15px;
 }
 
 header {
