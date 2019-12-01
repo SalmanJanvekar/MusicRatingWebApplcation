@@ -8,7 +8,7 @@ import { MusicComponent } from './music/music.component';
 const routes: Routes = [
   {path: 'Home', component: HomeComponent},
   {path: 'LogIn', component: LoginComponent},
-  {path: 'Music', component: MusicComponent},
+  {path: 'Music/music', component: MusicComponent},
 
 ];
 

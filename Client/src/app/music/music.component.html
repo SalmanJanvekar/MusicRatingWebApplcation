@@ -1,1 +1,52 @@
 <h1>Songs |</h1>
+<div >
+    <br>
+    <mat-card>
+        <button mat-raised-button color="primary" routerLink="/addSong">Add A Song</button>
+        <br>
+        <br>
+        <table mat-table [dataSource]="song">
+            <ng-container matColumnDef = "Title">
+                <th mat-header-cell *matHeaderCellDef>Title</th>
+                <td mat-cell *matCellDef = "let element">{{element.Title}}</td>
+            </ng-container>
+            <ng-container matColumnDef = "Artist">
+                <th mat-header-cell *matHeaderCellDef>Artist</th>
+                <td mat-cell *matCellDef = "let element">{{element.Artist}}</td>
+            </ng-container>
+            <ng-container matColumnDef = "Album">
+                    <th mat-header-cell *matHeaderCellDef>Album</th>
+                    <td mat-cell *matCellDef = "let element">{{element.Album}}</td>
+                </ng-container>
+            <ng-container matColumnDef = "Year">
+                <th mat-header-cell *matHeaderCellDef>Year</th>
+                <td mat-cell *matCellDef = "let element">{{element.Year}}</td>
+            </ng-container>
+            <ng-container matColumnDef = "Genre">
+                <th mat-header-cell *matHeaderCellDef>Genre</th>
+                <td mat-cell *matCellDef = "let element">{{element.Genre}</td>
+            </ng-container>
+            <ng-container matColumnDef = "Rating">
+                <th mat-header-cell *matHeaderCellDef>Rating</th>
+                <td mat-cell *matCellDef = "let element">{{element.Rating}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef = "displayedColumns"></tr>
+            <tr mat-row *matRowDef = "let row; columns: displayedColumns;"></tr>
+
+        </table>
+    </mat-card>
+</div>
+<!-- <body>
+     <p></p>
+        <form action='/Server/' method ="POST">
+            <input type="text" name = "Title"  placeholder="Title" ng-model = "Title" required autofocus>
+            <input type="text" name = "Artist"  placeholder="Artist" ng-model = "Artist" required autofocus>
+            <input type="text" name = "Album"  placeholder="Album" ng-model = "Album" required autofocus>
+            <input type="text" name = "Year"  placeholder="Year" ng-model = "Year" required autofocus>
+            <input type="text" name = "Genre"  placeholder="Genre" ng-model = "Genre" required autofocus>
+            <input type="text" name = "Rating"  placeholder="Rating" ng-model = "Rating" required autofocus>
+        
+        <button type = "submit" routerLink = "/addSong">Add a song</button>
+    </form>
+</body> -->

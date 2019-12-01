@@ -16,6 +16,7 @@ exports.test = function (req, res) {
 
 //Creates a new song
 exports.song_createSong = function (req, res, next) {
+res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     let Song = new song(
         {
             Title: req.body.Title,
@@ -28,14 +29,16 @@ exports.song_createSong = function (req, res, next) {
 
     Song.save(function (err, Song) {
         if (err) {
-            return next(err);
+            return res.status(500).send(); //500 server error, 404 not found, 200 OK.
         }
         res.json({message: 'Song created.', Song});
+        return res.status(200).send();
     })
 };
 
 //Gets the song based on ID
 exports.song_details = function (req, res, next) {
+res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     song.findById(req.params.id, function (err, Song) {
         if (err) return next(err);
         res.json({Song});
@@ -44,6 +47,7 @@ exports.song_details = function (req, res, next) {
 
 //Updates any part of the song
 exports.song_update = async function (req, res, next) {
+res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     try {
        var Song = await song.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, Song) {
             if (err) return next(err);
@@ -58,6 +62,7 @@ exports.song_update = async function (req, res, next) {
 
 //Deletes any song 
 exports.song_delete = function (req, res, next) {
+res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     song.findByIdAndRemove(req.params.id, function (err, Song) {
         if (err) return next(err);
         res.json({message: 'Song deleted.', Song});
@@ -66,6 +71,7 @@ exports.song_delete = function (req, res, next) {
 
 //Gets a list of all the songs
 exports.song_getAll = function (req, res, next){
+res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     song.find((err, items) => {
         if(err){
             console.log(err);
@@ -80,6 +86,7 @@ exports.song_getAll = function (req, res, next){
 
 //Creates and stores new user
 exports.user_createUser = function (req, res, next){
+res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     bcrypt.hash(req.body.Password, 10, function(err, hash) {
         let Users = new users(
             {
@@ -103,6 +110,7 @@ exports.user_createUser = function (req, res, next){
 
 //Existing user can Log in if they use the same password & username
 exports.user_logInUser = function (req, res, next){
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     const Username = req.body.Email;
     const Password = req.body.Password;
 
@@ -122,6 +130,7 @@ exports.user_logInUser = function (req, res, next){
 
 //Creates a new Rating for a song
 exports.reviews_createReviews = function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     let Reviews = new reviews(
         {
             Name: req.body.Name,
@@ -140,6 +149,7 @@ exports.reviews_createReviews = function (req, res, next) {
 
 //Gets All reviews for a song
 exports.reviews_getAll = function (req, res, next){
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     reviews.find((err, items) => {
         if(err){
             console.log(err);
