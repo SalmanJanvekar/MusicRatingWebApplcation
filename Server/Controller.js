@@ -2,9 +2,12 @@ var song = require('./Models/Song.js');
 var users = require('./Models/Users.js');
 var reviews = require('./Models/Reviews.js');
 
+
+
 const bcrypt = require('bcrypt');
 
 var randomCode = require("randomstring");
+
 
 
 //Simple version, without validation or sanitation
@@ -86,7 +89,7 @@ res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
 
 //Creates and stores new user
 exports.user_createUser = function (req, res, next){
-res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     bcrypt.hash(req.body.Password, 10, function(err, hash) {
         let Users = new users(
             {

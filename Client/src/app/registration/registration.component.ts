@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {login} from './login.model';
-import { Alert } from 'selenium-webdriver';
+import {FormsModule} from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-registration',
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class RegistrationComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
 
-  logInUser(){
+  }
+
+  addUser(){
     var Email = (<HTMLInputElement>document.getElementById("Email")).value;
     var Password = (<HTMLInputElement>document.getElementById("Password")).value;
 
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
 
     //defines http & opens post request
     const http = new XMLHttpRequest();
-    http.open("POST", uri+'/Music/logIn')
+    http.open("POST", uri+'/Music/register')
   
     let body = new URLSearchParams();
 
@@ -34,4 +35,6 @@ export class LoginComponent implements OnInit {
     http.send(body);
   }
 
+
 } 
+

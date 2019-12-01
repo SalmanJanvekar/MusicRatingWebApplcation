@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { MatTableDataSource} from '@angular/material';
 
 import {song} from './music.model';
-import {MusicService} from './music.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-music',
@@ -13,35 +13,45 @@ import {MusicService} from './music.service';
 })
 export class MusicComponent implements OnInit {
   
-  song: song[];
-  displayedColumns = ['Title', 'Artist', 'Album', 'Year', 'Genre', 'Rating'];
+  song = [];
 
-
-  constructor(private musicService: MusicService, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.fetchSongs();
   }
 
   fetchSongs() {
-    this.musicService
-      .getSongs()
-      .subscribe((data: song[])=>{
-        this.song = data;
-        console.log('Data Requested ...')
-        console.log(this.song);
-      })
-  }
 
-  editSong(id){
-    this.router.navigate(['/Music/'+id]);
-  }
+    var uri = 'http://localhost:1234';
 
-  deleteSong(id){
-    this.musicService.deleteSong(id).subscribe(()=>{
-        this.fetchSongs();
+    //routes to server to get all songs
+    this.http.get(uri +'/Music/music').subscribe(data =>{
+      Object.values(data).forEach(item => {
+        this.song=[ 
+          {Title: item.Title},
+          {Artist: item.Artist},
+          {Album: item.Album},
+          {Year: item.Year},
+          {Genre: item.Genre},
+          {Rating: item.Rating},
+        ]
+        
+      });
+    
     })
   }
 
+
+  editSong(id){
+    
+  }
+
+  deleteSong(id){
+    
+  
+  }
+
+  
 }
 
