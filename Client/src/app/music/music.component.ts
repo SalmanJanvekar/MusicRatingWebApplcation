@@ -2,8 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatTableDataSource} from '@angular/material';
-
-import {song} from './music.model';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -18,7 +16,7 @@ export class MusicComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.fetchSongs();
+
   }
 
   fetchSongs() {
@@ -26,19 +24,17 @@ export class MusicComponent implements OnInit {
     var uri = 'http://localhost:1234';
 
     //routes to server to get all songs
-    this.http.get(uri +'/Music/music').subscribe(data =>{
+    this.http.get(uri +'/Music/music').subscribe((data) => {
       Object.values(data).forEach(item => {
-        this.song=[ 
-          {Title: item.Title},
-          {Artist: item.Artist},
-          {Album: item.Album},
-          {Year: item.Year},
-          {Genre: item.Genre},
-          {Rating: item.Rating},
-        ]
-        
+        this.song.push({
+          Title: item.Title,
+          Artist: item.Artist,
+          Album: item.Album,
+          Year: item.Year,
+          Genre: item.Genre,
+          Rating: item.Rating,
+        })
       });
-    
     })
   }
 

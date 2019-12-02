@@ -1,6 +1,13 @@
 <h1>Songs |</h1>
 <button mat-raised-button color="primary" routerLink="/Music/addSong">Add A Song</button>
 <body>
-
-
+<ul>
+    <li *ngFor = "let s of song">
+       {{s.Title}}
+       {{s.Album}}
+       {{s.Year}}
+       {{s.Genre}}
+       {{s.Rating}}
+    </li>
+</ul>
 </body>

@@ -136,17 +136,17 @@ exports.reviews_createReviews = function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     let Reviews = new reviews(
         {
-            Name: req.body.Name,
+            Person: req.body.Person,
             Rating: req.body.Rating,
-            TrackName: req.body.TrackName,
+            Track: req.body.Track,
         }
     );
 
-    Reviews.save(function (err, Reviews) {
+    Reviews.save(function (err) {
         if (err) {
             return next(err);
         }
-        res.json({message: 'Rating Submitted.', Reviews});
+        res.status(200).send("successful");
     })
 };
 
