@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { MusicComponent } from './music/music.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AddSongComponent } from './add-song/add-song.component';
+import { AddReviewComponent } from './add-review/add-review.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { AddSongComponent } from './add-song/add-song.component';
     LoginComponent,
     MusicComponent,
     RegistrationComponent,
-    AddSongComponent
+    AddSongComponent,
+    AddReviewComponent
   ],
   imports: [
     BrowserModule,

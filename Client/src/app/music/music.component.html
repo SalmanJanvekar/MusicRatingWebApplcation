@@ -1,23 +1,31 @@
 <h1>Songs |</h1>
-<button mat-raised-button color="primary" routerLink="/Music/addSong" id = "addSong">Add A Song</button>
+<br>
+<br>
+<button class = "addasong" routerLink="/Music/addSong" id = "addSong">Add A Song</button>
+<br>
+<br>
+
 <body>
 <ul>
     <li *ngFor = "let s of song">
         <div class = "margin">
         <div>
-        Title: {{s.Title}}
+        Title:<span class = "color"> {{s.Title}}</span> 
         </div>
         <div>
-        Album: {{s.Album}}
+        Artist:<span class = "color"> {{s.Artist}}</span> 
         </div>
         <div>
-        Year: {{s.Year}}
+        Album:<span class = "color"> {{s.Album}}</span> 
         </div>
         <div>
-        Genre: {{s.Genre}}
+        Year:<span class = "color"> {{s.Year}}</span> 
         </div>
         <div>
-        Rating: {{s.Rating}}
+        Genre:<span class = "color"> {{s.Genre}}</span> 
+        </div>
+        <div>
+        Rating:<span class = "color2"> {{s.Rating}}</span> 
         </div>
     </div>
     </li>
