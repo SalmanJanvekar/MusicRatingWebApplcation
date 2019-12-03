@@ -1,5 +1,10 @@
 .margin{
     margin: 20px;
+    margin-left: 500px;
+}
+
+.margin1{
+    margin-left: 100px;
 }
 
 .color{
@@ -13,7 +18,7 @@
 .addasong{
     background-color: #b64040;
     border: none;
-    margin-left: 60px;
+    margin-left: 530px;
     color: white;
     padding: 10px 25px;
     text-align: center;
@@ -21,4 +26,16 @@
     display: inline-block;
     font-size: 16px;
 
+}
+
+.addareview{
+    background-color: #b64040;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin-top: 5px;
 }

@@ -1,5 +1,18 @@
 <h1>Songs |</h1>
 <br>
+    <div class = "margin1">
+        <img src="https://resources.tidal.com/images/cfdcb146/5bdd/4195/baa1/649920238411/480x480.jpg" alt="Drake" style="width:200px; height:200;">   
+        <img src="https://resources.tidal.com/images/7d045828/ae04/46b2/a670/665201d62877/480x480.jpg" alt="The Weeknd" style="width:200px; height:200;"> 
+        <img src="https://resources.tidal.com/images/062ec571/71c6/4b9c/8056/f2850f0cb1b8/480x480.jpg" alt="Travis Scott" style="width:200px; height:200;"> 
+        <img src="https://resources.tidal.com/images/86013b74/1f86/41c8/a49f/de6f8c07d2c2/480x480.jpg" alt="Tory Lanez" style="width:200px; height:200;"> 
+        <img src="https://resources.tidal.com/images/58dc8bce/21bd/49bf/b667/8cf4ea163193/480x480.jpg" alt="Lil Tecca" style="width:200px; height:200;"> 
+        <img src="https://resources.tidal.com/images/74556caa/1158/4540/8923/87875a934c3e/480x480.jpg" alt="Young Thug" style="width:200px; height:200;"> 
+        <img src="https://resources.wimpmusic.com/images/722148ca/ff17/43a3/af04/ce3cea0b44ea/480x480.jpg" alt="Gunna" style="width:200px; height:200;">
+        <img src="https://resources.wimpmusic.com/images/d331c001/8090/4bfb/b136/cc6eafcf8d83/480x480.jpg" alt="Bryson tiller" style="width:200px; height:200;"> 
+        <img src="https://resources.tidal.com/images/b194afd1/bd47/4400/99e9/370114e4f76a/480x480.jpg" alt="Roy Woods" style="width:200px; height:200;"> 
+        <img src="https://resources.tidal.com/images/83c17148/8158/4eff/b39a/b105ef8edd96/480x480.jpg" alt="Juice Wrld" style="width:200px; height:200;"> 
+    </div>
+<br>
 <br>
 <button class = "addasong" routerLink="/Music/addSong" id = "addSong">Add A Song</button>
 <br>
@@ -7,13 +20,13 @@
 
 <body>
 <ul>
-    <li *ngFor = "let s of song">
+    <div *ngFor = "let s of song">
         <div class = "margin">
         <div>
         Title:<span class = "color"> {{s.Title}}</span> 
         </div>
         <div>
-        Artist:<span class = "color"> {{s.Artist}}</span> 
+        Artist:<span class = "color"> {{s.Artist}}</span>
         </div>
         <div>
         Album:<span class = "color"> {{s.Album}}</span> 
@@ -27,7 +40,13 @@
         <div>
         Rating:<span class = "color2"> {{s.Rating}}</span> 
         </div>
+        <div>
+        <br>
+        <button class = "addareview" routerLink="/Music/addReview" id = "addReview">Add A Review</button>
+        <br>
+        <button class = "addareview" routerLink="/Music/viewReviews" id = "viewRatings">View all Reviews/Ratings</button>
+        </div>
     </div>
-    </li>
+    </div>
 </ul>
 </body>

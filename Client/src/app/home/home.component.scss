@@ -1,5 +1,5 @@
 .music{
-    color: #d42c2c;
+    color: #b64040;
 }
 .form-control {
     position: relative;
@@ -10,8 +10,19 @@
     font-size: 15px;
   }
 .bottom {
-    margin-top: -1px;
-    margin-bottom: 1px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+  margin-bottom: 10px;
+  margin-top: 1px;
+  background-color: #b64040;
+  border: none;
+ 
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+  align-items: baseline;
+  margin-right: 10px;
+  margin-left: 300px;
   }
