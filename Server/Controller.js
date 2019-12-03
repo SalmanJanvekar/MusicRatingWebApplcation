@@ -98,8 +98,8 @@ exports.user_createUser = function (req, res, next){
                 Active: false,
                 Deactive: true,
                 authenticationCode: randomCode.generate(5),
-
             }
+        
         );
             Users.save(function (err, Users) {
                 if (err) {
@@ -117,14 +117,23 @@ exports.user_logInUser = function (req, res, next){
     const Username = req.body.Email;
     const Password = req.body.Password;
 
-    users.findOne({ Email: Username, Password: Password}, function(err, foundUser){
+    users.findOne({ Email: Username}, function(err, foundUser){
         if(err){
-            res.send(err);
+            return res.send(err);
         }
         if(!foundUser){
-            res.send("User not found")
+            return res.send("User not found")
         }
-        res.send(foundUser);
+        else{
+            if(bcrypt.compare(Password, foundUser.Password))
+                return res.send(foundUser)
+                else{
+                    return res.send('Incorrect password')
+                        res.status.send
+                }
+        }
+
+ 
     })
 }
 
