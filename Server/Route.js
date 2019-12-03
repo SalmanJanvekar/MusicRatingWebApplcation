@@ -10,7 +10,7 @@ const controller = require('./Controller.js');
 router.get('/test', controller.test);
 //Methods for Reviews.js
 router.post('/addRating', controller.reviews_createReviews);
-router.get('/Ratings', controller.reviews_getAll);
+router.get('/Reviews', controller.reviews_getAll);
 //Methods for Users.js
 router.post('/register', controller.user_createUser);
 router.post('/logIn', controller.user_logInUser);

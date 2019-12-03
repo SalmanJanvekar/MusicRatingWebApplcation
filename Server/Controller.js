@@ -148,6 +148,7 @@ exports.reviews_createReviews = function (req, res, next) {
             Person: req.body.Person,
             Rating: req.body.Rating,
             Track: req.body.Track,
+            Review: req.body.Review,
         }
     );
 

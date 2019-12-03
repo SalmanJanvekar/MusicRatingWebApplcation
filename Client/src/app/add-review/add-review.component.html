@@ -1,10 +1,10 @@
 <form class="body">
         <div class="input">
-            <input type="Song" class="input" id="Song" placeholder="Song Name" required autofocus>
+            <input type="Song" class="input" id="Track" placeholder="Song Name" required autofocus>
         </div>
         <br>
         <div class="input">
-            <input type="Username" class="input" id="Username" placeholder="Username" required autofocus>
+            <input type="Username" class="input" id="Person" placeholder="Username" required autofocus>
         </div>
         <br>
         <div class="input">
@@ -17,6 +17,31 @@
         <br>
         <br>
         <div class = "input">
-        <button type="submit" (click) = 'addSong()' class="input bottom2" routerLink = "/Music/music">Post</button>
+        <button type="submit" (click) = 'addRating()' class="input bottom2">Post</button>
         </div>
     </form>
+    <body *ngFor = "let r of review">
+     <span class="heading">User Ratings for {{r.Track}} </span>
+            <p></p>
+            <hr style="border:3px solid #f1f1f1">
+            <body>
+                    <ul>
+                        <div *ngFor = "let r of review">
+                            <div class = "margin">
+                            <div>
+                                Username: <span class = "color"> {{r.Person}}</span>
+                            </div>
+                            <div>
+                                Rating:<span class = "color"> {{r.Rating}}</span> 
+                            </div>
+                            <div>
+                                Review:<span class = "color"> {{r.Review}}</span> 
+                            </div>
+                        </div>
+                        </div>
+                    </ul>
+                    <div>
+                            <button class = "addareview" routerLink="/Music/music" id = "addReview">Back</button>
+                        </div>
+    </body>
+            
