@@ -1,4 +1,6 @@
 <h1>Songs |</h1>
+<h2><span class = "margin2" >Search:    <input type = "text" [(ngModel)]="searchBox"></span></h2>
+
 <br>
     <div class = "margin1">
         <img src="https://resources.tidal.com/images/cfdcb146/5bdd/4195/baa1/649920238411/480x480.jpg" alt="Drake" style="width:200px; height:200;">   
@@ -19,8 +21,8 @@
 <br>
 
 <body>
-<ul>
-    <div *ngFor = "let s of song">
+<ul >
+    <div *ngFor = "let s of song | filter:searchBox">
         <div class = "margin">
         <div>
         Title:<span class = "color"> {{s.Title}}</span> 
@@ -41,8 +43,7 @@
         Rating:<span class = "color2"> {{s.Rating}}</span> 
         </div>
         <div>
-
-        <button class = "addareview" routerLink="/Music/addReview" id = "addReview">Add A Review/View Reviews</button>
+        <button class = "addareview" routerLink="/Music/addReview/{{s.Id}}">Add A Review/View Reviews</button>
         </div>
     </div>
     </div>

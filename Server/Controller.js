@@ -98,6 +98,7 @@ exports.user_createUser = function (req, res, next){
                 Active: false,
                 Deactive: true,
                 authenticationCode: randomCode.generate(5),
+                Admin: false,
             }
         
         );
@@ -173,3 +174,21 @@ exports.reviews_getAll = function (req, res, next){
     });
 }
 
+exports.calculateAverage = function(req, res, next){
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+    let Reviews = new reviews({
+        rating: req.body.Rating,
+    })
+
+    var num = 0;
+    var avgRating = 0;
+    var avgRating = Number(([(avgRating+rating)/(num)]))
+    num++
+    Reviews.save(function (err) {
+        if (err) {
+            return next(err);
+        }
+        res.status(200).send("successful");
+    })
+    return avgRating;
+}

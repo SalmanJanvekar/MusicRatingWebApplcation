@@ -9,8 +9,9 @@ const controller = require('./Controller.js');
 // a simple test url to check that all of our files are communicating correctly.
 router.get('/test', controller.test);
 //Methods for Reviews.js
-router.post('/addRating', controller.reviews_createReviews);
-router.get('/Reviews', controller.reviews_getAll);
+router.post('/addRating/:id', controller.reviews_createReviews);
+router.get('/Reviews/:id', controller.reviews_getAll);
+router.get('/AverageRating/:id', controller.calculateAverage);
 //Methods for Users.js
 router.post('/register', controller.user_createUser);
 router.post('/logIn', controller.user_logInUser);

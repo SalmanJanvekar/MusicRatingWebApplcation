@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatTableDataSource} from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { element } from 'protractor';
+import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-music',
@@ -14,7 +15,9 @@ export class MusicComponent implements OnInit {
   
   song = [];
 
-  constructor(private http: HttpClient) { }
+  avgRating = [];
+
+  constructor(private http: HttpClient, private router : Router) { }
 
   ngOnInit() {
     this.song = [];
@@ -29,6 +32,7 @@ export class MusicComponent implements OnInit {
       Object.values(data).forEach(element => {
         Object.values(element).forEach(item => {
           this.song.push({
+            Id: item["_id"],
             Title: item["Title"],
             Artist: item["Artist"],
             Album: item["Album"],
@@ -41,17 +45,6 @@ export class MusicComponent implements OnInit {
       });
     })
   }
-
-
-  editSong(id){
-    
-  }
-
-  deleteSong(id){
-    
-  
-  }
-
   
 }
 

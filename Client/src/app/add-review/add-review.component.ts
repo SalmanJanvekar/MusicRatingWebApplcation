@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute} from '@angular/router';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-review',
@@ -9,6 +12,10 @@ import { HttpClient } from '@angular/common/http';
 export class AddReviewComponent implements OnInit {
 
   review = [];
+  song = [];
+  avgRating = [];
+
+  songID;
 
   constructor(private http: HttpClient) { }
 
@@ -16,6 +23,10 @@ export class AddReviewComponent implements OnInit {
     this.review = [];
     this.fetchReviews();
   }
+
+
+
+
   addRating(){
     var Track = (<HTMLInputElement>document.getElementById("Track")).value;
     var Person = (<HTMLInputElement>document.getElementById("Person")).value;
@@ -27,7 +38,7 @@ export class AddReviewComponent implements OnInit {
 
     //defines http & opens post request
     const http = new XMLHttpRequest();
-    http.open("POST", uri+'/Music/addRating')
+    http.open("POST", uri+'/Music/addRating/:id')
   
     let body = new URLSearchParams();
 
@@ -44,19 +55,34 @@ export class AddReviewComponent implements OnInit {
   fetchReviews() {
     var uri = 'http://localhost:1234';
     
-    //routes to server to get all songs
-    this.http.get(uri +'/Music/Reviews').subscribe((data) => {
+    //routes to server to get all reviews
+    this.http.get(uri +'/Music/Reviews/:id'+ this.songID).subscribe((data) => {
       Object.values(data).forEach(element => {
         Object.values(element).forEach(item => {
           this.review.push({
             Track: item["Track"],
             Person: item["Person"],
             Rating: item["Rating"],
-            Review: item["Review"],
+            Review: item["Review"], 
           })
         })
         console.log(this.review);
       });
     })
   }
+  getAvg(id){
+    var uri = 'http://localhost:1234';
+
+    this.http.get(uri +'/Music/AverageRating/'+ id).subscribe((data) => {
+      Object.values(data).forEach(element => {
+        Object.values(element).forEach(item => {
+          this.avgRating.push({
+            avgRating: item["avgRating"],
+          })
+        })
+        console.log(this.avgRating);
+      });
+    })
+  }
+
 }

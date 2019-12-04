@@ -7,6 +7,7 @@ let usersSchema = new Schema({
     Active: {type: Boolean},
     Deactive: {type: Boolean},
     authenticationCode: {type: String, max: 5, min: 5},
+    Admin: {type: Boolean},
 });
 
 // Export the model

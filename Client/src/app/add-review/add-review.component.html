@@ -17,15 +17,14 @@
         <br>
         <br>
         <div class = "input">
-        <button type="submit" (click) = 'addRating()' class="input bottom2">Post</button>
+        <button type="submit" (click) = 'addRating()' routerLink = "/Music/music"class="input bottom2">Post</button>
         </div>
     </form>
-    <body *ngFor = "let r of review">
-     <span class="heading">User Ratings for {{r.Track}} </span>
+    <body>
+     <span class="heading">User Ratings
             <p></p>
             <hr style="border:3px solid #f1f1f1">
             <body>
-                    <ul>
                         <div *ngFor = "let r of review">
                             <div class = "margin">
                             <div>
@@ -37,11 +36,16 @@
                             <div>
                                 Review:<span class = "color"> {{r.Review}}</span> 
                             </div>
+                        <br>
+                        <br>
+
                         </div>
                         </div>
-                    </ul>
                     <div>
-                            <button class = "addareview" routerLink="/Music/music" id = "addReview">Back</button>
-                        </div>
+                    <br>
+                    <p>  </p>
+                    <br>
+                            <button class = "addareview" routerLink="/Music/music" id = "input bottom2">Back</button>
+                    </div>
     </body>
             
