@@ -19,6 +19,10 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AddSongComponent } from './add-song/add-song.component';
 import { AddReviewComponent } from './add-review/add-review.component';
 import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './auth/auth.service';
+import { AdminComponent } from './admin/admin.component';
+import { DMCAComponent } from './dmca/dmca.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 
 @NgModule({
@@ -30,6 +34,9 @@ import { AuthGuard } from './auth/auth.guard';
     RegistrationComponent,
     AddSongComponent,
     AddReviewComponent,
+    AdminComponent,
+    DMCAComponent,
+    PrivacyComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +59,7 @@ import { AuthGuard } from './auth/auth.guard';
     Ng2SearchPipeModule,
 
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

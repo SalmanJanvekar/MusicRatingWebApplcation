@@ -114,10 +114,10 @@ exports.user_createUser = function (req, res, next){
 
 //Existing user can Log in if they use the same password & username
 exports.user_logInUser = function (req, res, next){
+    
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     const Username = req.body.Email;
     const Password = req.body.Password;
-
     users.findOne({ Email: Username}, function(err, foundUser){
         if(err){
             return res.send(err);
@@ -130,13 +130,37 @@ exports.user_logInUser = function (req, res, next){
                 return res.send(foundUser)
                 else{
                     return res.send('Incorrect password')
-                        res.status.send
+                    
                 }
         }
-
- 
+        
     })
+    if (Username === "admin@admin.com" && Password === "admin") {
+        localStorage.setItem("currentUser", JSON.stringify(users));
+      
+      if (localStorage.getItem("currentUser")){
+        // logged in so return true
+        return users;
+      } else {
+        return false;
+      }
 }
+}
+
+//updates user
+exports.user_update = async function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+        try {
+           var Users = await users.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, users) {
+                if (err) return next(err);
+            }); 
+            return res.json({message: 'User udpated.', Users});
+        } catch(err) {
+            return next(err)
+        }
+        
+    
+    };
 
 
 //Reviews Controllers

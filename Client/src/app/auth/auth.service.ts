@@ -9,6 +9,11 @@ export class AuthService {
   constructor(private http: HttpClient ) { }
 
   loggedIn(){
-    return !!localStorage.getItem('authenticationCode')
+    if (localStorage.getItem("currentUser")) {
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 }

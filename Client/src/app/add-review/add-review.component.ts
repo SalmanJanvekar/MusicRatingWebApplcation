@@ -14,17 +14,23 @@ export class AddReviewComponent implements OnInit {
   review = [];
   song = [];
   avgRating = [];
-
+  routeSub: Subscription;
   songID;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute,) { }
 
   ngOnInit() {
+    this.routeSubs();
     this.review = [];
-    this.fetchReviews();
+    this.fetchReviews(this.songID);
   }
 
-
+private routeSubs(){
+  this.routeSub = this.route.params
+    .subscribe(params =>{
+      this.songID = params['id'];
+    })
+}
 
 
   addRating(){
@@ -38,7 +44,7 @@ export class AddReviewComponent implements OnInit {
 
     //defines http & opens post request
     const http = new XMLHttpRequest();
-    http.open("POST", uri+'/Music/addRating/:id')
+    http.open("POST", uri+'/Music/addRating/'+this.songID)
   
     let body = new URLSearchParams();
 
@@ -52,11 +58,11 @@ export class AddReviewComponent implements OnInit {
     http.send(body);
   }
 
-  fetchReviews() {
+  fetchReviews(id: string) {
     var uri = 'http://localhost:1234';
     
     //routes to server to get all reviews
-    this.http.get(uri +'/Music/Reviews/:id'+ this.songID).subscribe((data) => {
+    this.http.get(uri +'/Music/Reviews/'+id).subscribe((data) => {
       Object.values(data).forEach(element => {
         Object.values(element).forEach(item => {
           this.review.push({
@@ -73,7 +79,7 @@ export class AddReviewComponent implements OnInit {
   getAvg(id){
     var uri = 'http://localhost:1234';
 
-    this.http.get(uri +'/Music/AverageRating/'+ id).subscribe((data) => {
+    this.http.get(uri +'/Music/AverageRating/'+ this.songID).subscribe((data) => {
       Object.values(data).forEach(element => {
         Object.values(element).forEach(item => {
           this.avgRating.push({

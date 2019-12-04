@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   logInUser(){
+  
+
     var Email = (<HTMLInputElement>document.getElementById("Email")).value;
     var Password = (<HTMLInputElement>document.getElementById("Password")).value;
 
@@ -27,11 +29,15 @@ export class LoginComponent implements OnInit {
     let body = new URLSearchParams();
 
     //appends new email and password to body of the request
+    if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(Email)){
     body.append("Email", Email);
     body.append("Password", Password);
 
     //sends http response
     http.send(body);
+    }else{
+      return alert("Invalid Email")
+    }
   }
 
 } 

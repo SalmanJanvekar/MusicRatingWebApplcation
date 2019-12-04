@@ -8,14 +8,21 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AddSongComponent } from './add-song/add-song.component';
 import { AddReviewComponent } from './add-review/add-review.component';
 import { AuthGuard } from './auth/auth.guard';
+import { AdminComponent } from './admin/admin.component';
+import { DMCAComponent } from './dmca/dmca.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 const routes: Routes = [
-  {path: 'Home', component: HomeComponent,},
+  {path: 'Home', component: HomeComponent},
   {path: 'LogIn', component: LoginComponent},
   {path: 'Registration', component: RegistrationComponent},
   {path: 'Music/music', component: MusicComponent},
-  {path: 'Music/addSong', component: AddSongComponent, canActivate:[AuthGuard]},
-  {path: 'Music/addReview/:id', component: AddReviewComponent, canActivate:[AuthGuard]},
+  {path: 'Music/addSong', component: AddSongComponent},
+  {path: 'Music/addReview/:id', component: AddReviewComponent},
+  {path: 'AdminHome', component: AdminComponent, //canActivate:[AuthGuard]
+  },
+  {path: 'DMCA', component: DMCAComponent},
+  {path: 'Policies', component: PrivacyComponent}
 
 ];
 
